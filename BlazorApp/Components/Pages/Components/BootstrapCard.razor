@@ -34,9 +34,9 @@
             @ChildContent
         } else
         {
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">@Title</h5>
+            <p class="card-text">@Description</p>
+            <a href="#" class="btn btn-primary">@ButtonText</a>
         }
     </div>
 
@@ -49,21 +49,6 @@
     }
 
 
-
-
-
-    <div class="card-body">
-        @if (ChildContent != null)
-        {
-            @ChildContent
-        } else
-        {
-            <h5 class="card-title">@Title</h5>
-            <p class="card-text">@Description</p>
-            <a href="#" class="btn btn-primary" @onclick="EventClick">@ButtonText</a>
-        }
-
-    </div>
 </div>
 
 @code {
