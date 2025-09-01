@@ -1,18 +1,28 @@
-﻿@page "/router/{group}/{id:int}"
+﻿@page "/router/{group?}/{id:int?}"
+@page "/routing/{*all}"
+
+@attribute [Route(RouterConstants.RouterHub)]
 
 <h3>RouterHUb</h3>
 
-
-
 <div>
+    <p>Query: @Nome - @Nome2</p>
+    <p>Todos: @All</p>
     <p>Group: @Group</p>
     <p>Id: @Id</p>
 </div>
 
 @code {
     [Parameter]
+    public string? All { get; set; }
+    [Parameter]
     public string? Group { get; set; }
     [Parameter]
     public int? Id { get; set; }
+
+    [SupplyParameterFromQuery]
+    public string? Nome { get; set; }
+    [SupplyParameterFromQuery(Name = "dono")]
+    public string? Nome2 { get; set; }
 
 }
