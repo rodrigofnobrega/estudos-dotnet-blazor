@@ -1,9 +1,47 @@
 ﻿@page "/component"
 
+@rendermode InteractiveServer
+
+@inject IJSRuntime JS
+
+
 <h3>Componentes</h3>
 
-<BootstrapCard Title="Título do card" Description="Meu primeiro card" ButtonText="Vou redirecionar"/>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <BootstrapCard Title="Título do card"
+                       Description="Meu primeiro card"
+                       ButtonText="Contar"
+                       EventClick="@((e) => EventClickCard1(e))" />
+
+
+    </div>
+
+    <div class="col-md-3">
+        <BootstrapCard>
+            <CardHeader>
+                Cabeçalho
+            </CardHeader>
+            <CardText>
+                Conteúdo
+            </CardText>
+            <CardFooter>
+                Rodapé
+            </CardFooter>
+        </BootstrapCard>
+    </div>
+</div>
 
 @code {
+    public void EventClickCard1(MouseEventArgs a) 
+    {
+        JS.InvokeVoidAsync("alert", "Card 1 - " + a.ScreenY);
+    }
 
+    public void EventClickCard2()
+    {
+        JS.InvokeVoidAsync("alert", "Card 2");
+    }
 }
