@@ -1,0 +1,18 @@
+﻿@page "/router/{group}/{id:int}"
+
+<h3>RouterHUb</h3>
+
+
+
+<div>
+    <p>Group: @Group</p>
+    <p>Id: @Id</p>
+</div>
+
+@code {
+    [Parameter]
+    public string? Group { get; set; }
+    [Parameter]
+    public int? Id { get; set; }
+
+}
