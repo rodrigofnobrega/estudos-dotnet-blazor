@@ -3,16 +3,24 @@
 
 @attribute [Route(RouterConstants.RouterHub)]
 
+@inject NavigationManager Navigation
+
+@rendermode InteractiveServer
+
 <h3>RouterHUb</h3>
 
 <div>
-    <p>Query: @Nome - @Nome2</p>
     <p>Todos: @All</p>
     <p>Group: @Group</p>
     <p>Id: @Id</p>
+    <p>QueryString: @Nome - @Nome2</p>
+    <input @bind="Router" />
+    <button @onclick="OnClick">Navegar</button>
 </div>
 
 @code {
+    public string? Router { get; set; }
+
     [Parameter]
     public string? All { get; set; }
     [Parameter]
@@ -24,5 +32,14 @@
     public string? Nome { get; set; }
     [SupplyParameterFromQuery(Name = "dono")]
     public string? Nome2 { get; set; }
+
+
+    public void OnClick()
+    {
+        if (!string.IsNullOrEmpty(Router))
+        {
+            Navigation.NavigateTo(Router);   
+        }
+    }
 
 }
